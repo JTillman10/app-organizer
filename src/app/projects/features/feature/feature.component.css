@@ -1,0 +1,39 @@
+.requirements {
+  margin-left: 15%;
+}
+
+.requirement .mat-form-field {
+  width: 60%;
+}
+
+.inline {
+  display: inline;
+}
+
+.right {
+  float: right;
+}
+
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+}
+
+.margin-left {
+  margin-left: 0.5rem;
+}
+
+.margin-right {
+  margin-right: 0.5rem;
+}
+
+.mat-form-field .delete {
+  color: red;
+}
+
+.mat-form-field .mat-icon {
+  cursor: pointer;
+}

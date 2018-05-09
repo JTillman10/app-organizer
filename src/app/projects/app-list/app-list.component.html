@@ -1,0 +1,23 @@
+<mat-list>
+  <mat-list-item *ngFor="let app of apps; last as isLast" (click)="selectApp(app)">
+    <mat-icon color="primary" *ngIf="isAppActive(app)">keyboard_arrow_right</mat-icon>
+    {{ app.name }}
+    <mat-divider *ngIf="!isLast"></mat-divider>
+  </mat-list-item>
+</mat-list>
+<div>
+  <create-button (clicked)="toggleCreateApp()" *ngIf="!creatingApp">
+    <span>App</span>
+  </create-button>
+  <mat-form-field *ngIf="creatingApp">
+    <input [(ngModel)]="newAppName" matInput placeholder="App name" />
+  </mat-form-field>
+  <div>
+    <button mat-raised-button *ngIf="creatingApp" (click)="createApp()">
+      <mat-icon>done</mat-icon>
+    </button>
+    <button mat-raised-button *ngIf="creatingApp" (click)="toggleCreateApp()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</div>

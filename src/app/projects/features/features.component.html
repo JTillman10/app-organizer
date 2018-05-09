@@ -1,0 +1,22 @@
+<div class="content" *ngIf="features">
+  <div *ngIf="features.length === 0 && !creatingFeature">There are no features to display. Please create the first one.</div>
+  <form class="form">
+    <div>
+      <create-button (clicked)="toggleCreateFeature()" *ngIf="!creatingFeature">
+        <span>Feature</span>
+      </create-button>
+      <mat-form-field *ngIf="creatingFeature">
+        <input name="newFeature" matInput [(ngModel)]="newFeatureName" placeholder="New feature name" />
+      </mat-form-field>
+      <div>
+        <button mat-raised-button *ngIf="creatingFeature" (click)="createFeature()">
+          <mat-icon>done</mat-icon>
+        </button>
+        <button mat-raised-button *ngIf="creatingFeature" (click)="toggleCreateFeature()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>
+    <feature-list [features]="features"></feature-list>
+  </form>
+</div>

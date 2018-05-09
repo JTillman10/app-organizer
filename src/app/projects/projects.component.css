@@ -1,0 +1,31 @@
+.container {
+  margin: 0.5em;
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  display: flex;
+  width: 12em;
+}
+
+mat-form-field {
+  margin-top: 1rem;
+}
+
+mat-sidenav-content {
+  background: #ffffff;
+  margin: 1 em;
+}
+
+.mat-raised-button.mat-primary {
+  float: left;
+  background: red;
+}
+
+mat-sidenav {
+  border-right: solid gray 1px;
+}

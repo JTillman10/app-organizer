@@ -8,8 +8,11 @@ import { AuthModule } from './auth/auth.module';
 import { ProjectsModule } from './projects/projects.module';
 import { SharedModule } from './shared/shared.module';
 
+import { Store } from '../store';
+import { HeaderComponent } from './header/header.component';
+
 export const ROUTES: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'auth' }
+  { path: '', pathMatch: 'full', redirectTo: 'projects' }
 ];
 
 @NgModule({
@@ -21,7 +24,8 @@ export const ROUTES: Routes = [
     SharedModule,
     AuthModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
+  providers: [Store],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

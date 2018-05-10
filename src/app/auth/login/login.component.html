@@ -1,7 +1,10 @@
 <div>
-  <auth-form>
+  <auth-form (submitted)="loginUser($event)">
     <h2>Login</h2>
     <a routerLink="/auth/register">Not registered?</a>
     <span>Login</span>
+    <div class="error" *ngIf="error">
+      {{ error }}
+    </div>
   </auth-form>
 </div>

@@ -1,7 +1,4 @@
-<mat-toolbar color="primary">
-  <span>App Organizer</span>
-  <a routerLink="/auth/login">Login</a>
-  <a routerLink="/projects">Projects</a>
-</mat-toolbar>
+<header [user]="user$ | async" (logout)="onLogout()">
+</header>
 
 <router-outlet></router-outlet>

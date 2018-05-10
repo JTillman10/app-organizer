@@ -1,6 +1,6 @@
 <mat-card>
   <div>
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <ng-content select="h2"></ng-content>
       <mat-form-field>
         <input matInput placeholder="Email" type="email" formControlName="email">
@@ -9,6 +9,15 @@
       <mat-form-field>
         <input matInput placeholder="Password" type="password" formControlName="password">
       </mat-form-field>
+
+      <div class="error" *ngIf="emailFormat">
+        Invalid email format
+      </div>
+      <div class="error" *ngIf="passwordInvalid">
+        Password is required
+      </div>
+      <ng-content select=".error"></ng-content>
+
       <div>
         <button mat-raised-button color="primary">
           <ng-content select="span"></ng-content>

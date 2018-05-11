@@ -29,3 +29,7 @@ mat-sidenav-content {
 mat-sidenav {
   border-right: solid gray 1px;
 }
+
+.width100 {
+  width: 100%;
+}

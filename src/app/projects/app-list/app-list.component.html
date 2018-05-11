@@ -1,5 +1,5 @@
 <mat-list>
-  <mat-list-item *ngFor="let app of apps; last as isLast" (click)="selectApp(app)">
+  <mat-list-item *ngFor="let app of apps$ | async; last as isLast" (click)="selectApp(app)">
     <mat-icon color="primary" *ngIf="isAppActive(app)">keyboard_arrow_right</mat-icon>
     {{ app.name }}
     <mat-divider *ngIf="!isLast"></mat-divider>

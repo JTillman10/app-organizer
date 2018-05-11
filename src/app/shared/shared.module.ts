@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -16,6 +16,8 @@ import {
 } from '@angular/material';
 
 import { CreateButtonComponent } from './create-button/create-button.component';
+
+import { AppListService } from './services/app-list.service';
 
 const materialModules = [
   MatToolbarModule,
@@ -35,4 +37,11 @@ const materialModules = [
   declarations: [CreateButtonComponent],
   exports: [FormsModule, materialModules, CreateButtonComponent]
 })
-export class SharedModule {}
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [AppListService]
+    };
+  }
+}

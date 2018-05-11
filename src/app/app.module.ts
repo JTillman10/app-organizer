@@ -21,7 +21,7 @@ export const ROUTES: Routes = [
     BrowserAnimationsModule,
     ProjectsModule,
     RouterModule.forRoot(ROUTES),
-    SharedModule,
+    SharedModule.forRoot(),
     AuthModule
   ],
   declarations: [AppComponent, HeaderComponent],

@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { FeaturesModule } from './features/features.module';
 
-import { AppListComponent } from './app-list/app-list.component';
+import { AppListModule } from './app-list/app-list.module';
 import { ProjectsComponent } from './projects.component';
 
 import { AuthGuard } from '../auth/shared/guards/auth.guard';
@@ -19,8 +19,9 @@ export const ROUTES: Routes = [
     CommonModule,
     RouterModule.forChild(ROUTES),
     SharedModule,
-    FeaturesModule
+    FeaturesModule,
+    AppListModule
   ],
-  declarations: [ProjectsComponent, AppListComponent]
+  declarations: [ProjectsComponent]
 })
 export class ProjectsModule {}

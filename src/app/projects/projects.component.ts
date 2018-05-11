@@ -11,7 +11,7 @@ export class ProjectsComponent {
 
   currentApp: App;
 
-  onAppSelected(newApp) {
+  onAppSelected(newApp: App) {
     this.currentApp = newApp;
   }
 }

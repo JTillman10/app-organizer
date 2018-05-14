@@ -6,11 +6,10 @@ export interface FeatureList {
 export interface Feature {
   name: string;
   number: number;
-  requirements: Requirement[];
 }
 
 export interface Requirement {
-  id: number;
+  number: number;
   name: string;
   done: boolean;
 }

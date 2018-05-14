@@ -1,0 +1,17 @@
+.container {
+  margin: 0.5em;
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  display: flex;
+  width: 12em;
+}
+
+.width100 {
+  width: 100%;
+}

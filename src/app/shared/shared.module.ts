@@ -15,9 +15,11 @@ import {
   MatCheckboxModule
 } from '@angular/material';
 
-import { CreateButtonComponent } from './create-button/create-button.component';
+import { CreateButtonComponent } from './components/create-button/create-button.component';
+import { HeaderComponent } from './components/header/header.component';
 
 import { AppListService } from './services/app-list.service';
+import { FeatureService } from './services/feature.service';
 
 const materialModules = [
   MatToolbarModule,
@@ -34,14 +36,19 @@ const materialModules = [
 
 @NgModule({
   imports: [CommonModule, FormsModule, materialModules],
-  declarations: [CreateButtonComponent],
-  exports: [FormsModule, materialModules, CreateButtonComponent]
+  declarations: [CreateButtonComponent, HeaderComponent],
+  exports: [
+    FormsModule,
+    materialModules,
+    CreateButtonComponent,
+    HeaderComponent
+  ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [AppListService]
+      providers: [AppListService, FeatureService]
     };
   }
 }

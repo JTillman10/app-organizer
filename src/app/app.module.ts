@@ -5,26 +5,25 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
-import { ProjectsModule } from './projects/projects.module';
+import { ContainersModule } from './containers/containers.module';
 import { SharedModule } from './shared/shared.module';
 
 import { Store } from '../store';
-import { HeaderComponent } from './header/header.component';
 
 export const ROUTES: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'projects' }
+  { path: '', pathMatch: 'full', redirectTo: 'apps' }
 ];
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ProjectsModule,
+    ContainersModule,
     RouterModule.forRoot(ROUTES),
     SharedModule.forRoot(),
     AuthModule
   ],
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent],
   providers: [Store],
   bootstrap: [AppComponent]
 })

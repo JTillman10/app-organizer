@@ -5,7 +5,9 @@ import {
   EventEmitter,
   OnDestroy
 } from '@angular/core';
-import { App } from './app.model';
+import { Router } from '@angular/router';
+
+import { App } from '../../models/app.model';
 import { appData } from './apps';
 import { AppListService } from '../../shared/services/app-list.service';
 import { Store } from '../../../store';
@@ -30,7 +32,11 @@ export class AppListComponent implements OnInit, OnDestroy {
   newAppName = '';
   numberOfApps: number;
 
-  constructor(private store: Store, private appsService: AppListService) {}
+  constructor(
+    private store: Store,
+    private appsService: AppListService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.apps$ = this.store
@@ -41,6 +47,11 @@ export class AppListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  navigateToApp(app: App) {
+    this.router.navigate(['../apps', app.key]);
+    // this.router.navigate(['apps/1']);
   }
 
   selectApp(app) {

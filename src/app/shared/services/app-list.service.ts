@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import 'rxjs-compat/add/operator/do';
 
-import { App } from '../../projects/app-list/app.model';
+import { App } from '../../models/app.model';
 
 import { AuthService } from '../../auth/shared/services/auth/auth.service';
 
@@ -15,7 +15,13 @@ import { AuthService } from '../../auth/shared/services/auth/auth.service';
 export class AppListService {
   apps$: Observable<App[]> = this.db
     .list<App>(`apps/${this.uid}`)
-    .valueChanges()
+    .snapshotChanges()
+    .map(actions => {
+      return actions.map(action => ({
+        key: action.key,
+        ...action.payload.val()
+      }));
+    })
     .do(next => this.store.set('apps', next));
 
   constructor(

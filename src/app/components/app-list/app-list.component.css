@@ -1,15 +1,10 @@
-.container {
-  margin: 0.5em;
-  position: absolute;
-  top: 60px;
-  bottom: 60px;
-  left: 0;
-  right: 0;
+mat-list-item:hover {
+  cursor: pointer;
+  background-color: #f6f8fa;
 }
 
-.sidenav {
-  display: flex;
-  width: 12em;
+.mat-list-item {
+  margin: 1%;
 }
 
 mat-form-field {
@@ -28,8 +23,4 @@ mat-sidenav-content {
 
 mat-sidenav {
   border-right: solid gray 1px;
-}
-
-.width100 {
-  width: 100%;
 }

@@ -1,5 +1,5 @@
-<div class="content" *ngIf="features">
-  <div *ngIf="features.length === 0 && !creatingFeature">There are no features to display. Please create the first one.</div>
+<div class="content">
+  <div>There are no features to display. Please create the first one.</div>
   <form class="form">
     <div>
       <create-button (clicked)="toggleCreateFeature()" *ngIf="!creatingFeature">
@@ -17,6 +17,6 @@
         </button>
       </div>
     </div>
-    <feature-list [features]="features"></feature-list>
+    <feature-list [features]="features$ | async"></feature-list>
   </form>
 </div>

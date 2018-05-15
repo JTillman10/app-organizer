@@ -21,9 +21,8 @@
         </div>
       </div>
       <div class="features">
-        <div class="feature" *ngFor="let feature of features">
-          <feature [feature]="feature" (update)="updateFeature($event)">
-          </feature>
+        <div class="feature" [ngClass]="{'pad-right': isEven}" *ngFor="let feature of features; even as isEven">
+          <feature [feature]="feature" (update)="updateFeature($event)"></feature>
         </div>
       </div>
     </form>

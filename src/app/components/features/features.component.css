@@ -1,12 +1,18 @@
 .content {
   margin-top: 0.5rem;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 2rem;
 }
 
 .features {
   margin-top: 2rem;
 }
 
-.mat-card {
-  margin-bottom: 1rem;
+.feature {
+  width: 48%;
+  display: inline-grid;
+}
+
+.pad-right {
+  padding-right: 4rem;
 }

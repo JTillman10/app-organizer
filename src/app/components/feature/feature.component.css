@@ -38,10 +38,12 @@
   cursor: pointer;
 }
 
-.mat-card {
-  max-width: 600px;
-}
-
 right {
   float: right;
+}
+
+.mat-card {
+  width: 100%;
+  margin-bottom: 1rem;
+  min-height: 150px;
 }

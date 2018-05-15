@@ -4,3 +4,8 @@
 body {
   background-color: whitesmoke;
 }
+
+html,
+body {
+  font-family: Roboto, sans-serif;
+}

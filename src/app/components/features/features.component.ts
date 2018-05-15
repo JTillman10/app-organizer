@@ -42,7 +42,8 @@ export class FeaturesComponent implements OnInit {
     await this.featureService.addFeature(
       {
         name: this.newFeatureName,
-        number: this.numberOfFeatures + 1
+        number: this.numberOfFeatures + 1,
+        requirements: []
       },
       this.appId
     );
@@ -53,5 +54,13 @@ export class FeaturesComponent implements OnInit {
 
   toggleCreateFeature() {
     this.creatingFeature = !this.creatingFeature;
+  }
+
+  async updateFeature(newFeature) {
+    await this.featureService.updateFeature(
+      newFeature.key,
+      this.appId,
+      newFeature
+    );
   }
 }

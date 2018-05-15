@@ -1,11 +1,8 @@
-export interface FeatureList {
-  id: number;
-  features: Feature[];
-}
-
 export interface Feature {
   name: string;
   number: number;
+  requirements: Requirement[];
+  key?: string;
 }
 
 export interface Requirement {

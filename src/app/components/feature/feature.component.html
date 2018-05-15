@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-title>
+    <span>
+      {{ feature.name }}
+    </span>
+    <button mat-raised-button color="secondary" class="right" (click)="toggleEditing()">
+      <span *ngIf="!editing">
+        <span>Edit</span>
+      </span>
+      <span *ngIf="editing">Cancel</span>
+    </button>
+  </mat-card-title>
+  <section>
+    <div class="requirement" *ngFor="let requirement of feature.requirements">
+      <div *ngIf="editing; else notEditing">
+        <mat-checkbox [(ngModel)]="requirement.done" name="{{requirement.name}}-checkbox">
+        </mat-checkbox>
+        <mat-form-field class="margin-left">
+          <input matInput name="{{requirement.name}}-input" [(ngModel)]="requirement.name" />
+          <mat-icon class="delete" matSuffix (click)="deleteRequirement(requirement.number)">close</mat-icon>
+        </mat-form-field>
+      </div>
+      <ng-template #notEditing>
+        <div>{{ requirement.name }}</div>
+      </ng-template>
+    </div>
+    <div class="buttons" *ngIf="editing">
+      <create-button (clicked)="createRequirement(feature.number)">
+        <span>Requirement</span>
+      </create-button>
+      <button mat-raised-button color="primary" class="right" (click)="updateRequirement()">
+        <mat-icon>check</mat-icon>
+        <span>Save</span>
+      </button>
+    </div>
+  </section>
+</mat-card>

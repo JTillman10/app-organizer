@@ -29,12 +29,24 @@ export class FeatureService {
   getFeatures(appId: string) {
     this.features$ = this.db
       .list<Feature>(`features/${this.uid}/${appId}`)
-      .valueChanges()
+      .snapshotChanges()
+      .map(actions => {
+        return actions.map(action => ({
+          key: action.key,
+          ...action.payload.val()
+        }));
+      })
       .do(next => this.store.set('features', next));
     return this.features$;
   }
 
   addFeature(feature: Feature, appId: string) {
     return this.db.list(`features/${this.uid}/${appId}`).push(feature);
+  }
+
+  updateFeature(key: string, appId: string, feature: Feature) {
+    return this.db
+      .object(`features/${this.uid}/${appId}/${key}`)
+      .update(feature);
   }
 }

@@ -1,22 +1,34 @@
 <div class="content">
-  <div>There are no features to display. Please create the first one.</div>
-  <form class="form">
-    <div>
-      <create-button (clicked)="toggleCreateFeature()" *ngIf="!creatingFeature">
-        <span>Feature</span>
-      </create-button>
-      <mat-form-field *ngIf="creatingFeature">
-        <input name="newFeature" matInput [(ngModel)]="newFeatureName" placeholder="New feature name" />
-      </mat-form-field>
+  <div *ngIf="features$ | async as features; else loading">
+    <mat-card *ngIf="!features">
+      <mat-card-title>There are no features to display. Please create the first one.</mat-card-title>
+    </mat-card>
+    <form>
       <div>
-        <button mat-raised-button *ngIf="creatingFeature" (click)="createFeature()">
-          <mat-icon>done</mat-icon>
-        </button>
-        <button mat-raised-button *ngIf="creatingFeature" (click)="toggleCreateFeature()">
-          <mat-icon>clear</mat-icon>
-        </button>
+        <create-button (clicked)="toggleCreateFeature()" *ngIf="!creatingFeature">
+          <span>Feature</span>
+        </create-button>
+        <mat-form-field *ngIf="creatingFeature">
+          <input name="newFeature" matInput [(ngModel)]="newFeatureName" placeholder="New feature name" />
+        </mat-form-field>
+        <div>
+          <button mat-raised-button *ngIf="creatingFeature" (click)="createFeature()">
+            <mat-icon>done</mat-icon>
+          </button>
+          <button mat-raised-button *ngIf="creatingFeature" (click)="toggleCreateFeature()">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
-    <feature-list [features]="features$ | async"></feature-list>
-  </form>
+      <div class="features">
+        <div class="feature" *ngFor="let feature of features">
+          <feature [feature]="feature" (update)="updateFeature($event)">
+          </feature>
+        </div>
+      </div>
+    </form>
+  </div>
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
 </div>

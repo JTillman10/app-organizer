@@ -4,22 +4,11 @@ import { SharedModule } from '../shared/shared.module';
 
 import { FeaturesComponent } from './features/features.component';
 import { AppListComponent } from './app-list/app-list.component';
-import { FeatureListComponent } from './features/feature-list/feature-list.component';
-import { FeatureComponent } from './features/feature/feature.component';
+import { FeatureComponent } from './feature/feature.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule],
-  declarations: [
-    AppListComponent,
-    FeaturesComponent,
-    FeatureListComponent,
-    FeatureComponent
-  ],
-  exports: [
-    AppListComponent,
-    FeaturesComponent,
-    FeatureListComponent,
-    FeatureComponent
-  ]
+  declarations: [AppListComponent, FeaturesComponent, FeatureComponent],
+  exports: [AppListComponent, FeaturesComponent, FeatureComponent]
 })
 export class ComponentsModule {}

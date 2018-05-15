@@ -12,7 +12,8 @@ import {
   MatGridListModule,
   MatCardModule,
   MatIconModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { CreateButtonComponent } from './components/create-button/create-button.component';
@@ -31,7 +32,8 @@ const materialModules = [
   MatGridListModule,
   MatCardModule,
   MatIconModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({

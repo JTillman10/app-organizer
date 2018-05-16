@@ -3,15 +3,11 @@
 }
 
 .requirement .mat-form-field {
-  width: 95%;
+  width: 97%;
 }
 
 .inline {
   display: inline;
-}
-
-.right {
-  float: right;
 }
 
 .white {
@@ -38,12 +34,16 @@
   cursor: pointer;
 }
 
-right {
-  float: right;
-}
-
 .mat-card {
   width: 100%;
   margin-bottom: 1rem;
   min-height: 150px;
+}
+
+.large {
+  width: 103.38px;
+}
+
+.pad-right {
+  padding-right: 1rem;
 }

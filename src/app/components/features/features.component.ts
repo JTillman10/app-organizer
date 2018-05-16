@@ -8,6 +8,7 @@ import { FeatureService } from '../../shared/services/feature.service';
 import { Store } from '../../../store';
 import { Observable, Subscription } from 'rxjs';
 import { tap, filter } from 'rxjs/operators';
+import { App } from '../../models/app.model';
 
 @Component({
   selector: 'features',
@@ -15,7 +16,7 @@ import { tap, filter } from 'rxjs/operators';
   styleUrls: ['./features.component.css']
 })
 export class FeaturesComponent implements OnInit {
-  features$: Observable<Feature[]>;
+  app$: Observable<App> = this.store.select<App>('app');
   subscription: Subscription;
 
   appId: string;
@@ -32,9 +33,64 @@ export class FeaturesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.features$ = this.route.params.switchMap(param => {
-      this.appId = param.id;
-      return this.featureService.getFeatures(param.id);
+    this.route.params
+      .switchMap(param => {
+        this.appId = param.id;
+        return this.featureService.getFeatures(param.id);
+      })
+      .subscribe(data => {
+        this.features = data;
+      });
+  }
+
+  get featuresDone() {
+    if (this.features) {
+      return this.features.reduce((accumulator, feature) => {
+        if (feature.requirements) {
+          return accumulator + feature.requirements.filter(r => r.done).length;
+        }
+        return accumulator + 0;
+      }, 0);
+    }
+    return 0;
+  }
+
+  get totalFeatures() {
+    if (this.features) {
+      return this.features.reduce((accumulator, feature) => {
+        if (feature.requirements) {
+          return accumulator + feature.requirements.length;
+        }
+        return accumulator + 0;
+      }, 0);
+    }
+    return 0;
+  }
+
+  get featuresDoneColor() {
+    const percentage = this.featuresDone / this.totalFeatures;
+    if (percentage > 0.66) {
+      return 'green';
+    }
+    if (percentage <= 0.33) {
+      return 'red';
+    }
+    return '';
+  }
+
+  toggleCreateFeature() {
+    this.creatingFeature = !this.creatingFeature;
+  }
+
+  orderFeatures() {
+    this.features.sort((a, b) => {
+      if (a.number < b.number) {
+        return -1;
+      }
+      if (a.number > b.number) {
+        return 1;
+      }
+      return 0;
     });
   }
 
@@ -50,10 +106,6 @@ export class FeaturesComponent implements OnInit {
 
     this.newFeatureName = '';
     this.toggleCreateFeature();
-  }
-
-  toggleCreateFeature() {
-    this.creatingFeature = !this.creatingFeature;
   }
 
   async updateFeature(newFeature) {

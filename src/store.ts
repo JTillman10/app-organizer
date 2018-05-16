@@ -8,6 +8,7 @@ import { Feature } from './app/models/feature.model';
 export interface State {
   user: User;
   apps: App[];
+  app: App;
   features: Feature[];
   [key: string]: any;
 }
@@ -15,6 +16,7 @@ export interface State {
 const state: State = {
   user: undefined,
   apps: undefined,
+  app: undefined,
   features: undefined
 };
 

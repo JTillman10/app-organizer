@@ -3,12 +3,15 @@
     <span>
       {{ feature.name }}
     </span>
-    <button mat-raised-button color="secondary" class="right" (click)="toggleEditing()">
+    <button mat-raised-button color="secondary" class="right large" (click)="toggleEditing()">
       <span *ngIf="!editing">
         <span>Edit</span>
       </span>
       <span *ngIf="editing">Cancel</span>
     </button>
+    <span class="right pad-right {{requirementsDoneColor}}">
+      {{ requirementsDone }} / {{ feature.requirements ? feature.requirements.length : 0}}
+    </span>
   </mat-card-title>
   <section>
     <div class="requirement" *ngFor="let requirement of feature.requirements">
@@ -24,11 +27,11 @@
         <div>{{ requirement.name }}</div>
       </ng-template>
     </div>
-    <div class="buttons" *ngIf="editing">
+    <div *ngIf="editing">
       <create-button (clicked)="createRequirement(feature.number)">
         <span>Requirement</span>
       </create-button>
-      <button mat-raised-button color="primary" class="right" (click)="updateRequirement()">
+      <button mat-raised-button color="primary" class="right large" (click)="updateRequirement()">
         <mat-icon>check</mat-icon>
         <span>Save</span>
       </button>

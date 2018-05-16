@@ -1,7 +1,9 @@
 <mat-card>
   <div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <ng-content select="h2"></ng-content>
+      <section class="mat-typography">
+        <ng-content select="h2"></ng-content>
+      </section>
       <mat-form-field>
         <input matInput placeholder="Email" type="email" formControlName="email">
       </mat-form-field>

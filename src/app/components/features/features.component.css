@@ -16,3 +16,26 @@
 .pad-right {
   padding-right: 4rem;
 }
+
+.title {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.left {
+  float: left;
+}
+
+.section {
+  display: inline-block;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 400;
+  padding-right: 1rem;
+}

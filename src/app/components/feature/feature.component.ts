@@ -7,7 +7,7 @@ import { Feature } from '../../models/feature.model';
   styleUrls: ['./feature.component.css']
 })
 export class FeatureComponent implements OnInit {
-  @Input() feature;
+  @Input() feature: Feature;
 
   @Output() update = new EventEmitter<Feature>();
 
@@ -23,7 +23,7 @@ export class FeatureComponent implements OnInit {
     if (this.feature.requirements) {
       this.feature.requirements.forEach(requirement => {
         this.requirementsMap.push({
-          requirement: requirement.id,
+          requirement: requirement.number,
           editing: false
         });
       });
@@ -32,6 +32,40 @@ export class FeatureComponent implements OnInit {
 
   toggleEditing() {
     this.editing = !this.editing;
+  }
+
+  get requirementsDone() {
+    if (this.feature.requirements) {
+      return this.feature.requirements.filter(r => r.done).length;
+    }
+    return 0;
+  }
+
+  get requirementsDoneColor() {
+    if (this.feature.requirements) {
+      const percentage =
+        this.requirementsDone / this.feature.requirements.length;
+      if (percentage > 0.66) {
+        return 'green';
+      }
+      if (percentage <= 0.33) {
+        return 'red';
+      }
+      return '';
+    }
+    return 'red';
+  }
+
+  orderRequirements() {
+    this.feature.requirements.sort((a, b) => {
+      if (a.number < b.number) {
+        return -1;
+      }
+      if (a.number > b.number) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   deleteRequirement(requirementNumber) {

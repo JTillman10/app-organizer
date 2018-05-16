@@ -50,13 +50,9 @@ export class AppListComponent implements OnInit, OnDestroy {
   }
 
   navigateToApp(app: App) {
-    this.router.navigate(['../apps', app.key]);
-    // this.router.navigate(['apps/1']);
-  }
-
-  selectApp(app) {
     this.selectedApp = app;
-    this.appSelected.emit(app);
+    this.store.set('app', app);
+    this.router.navigate(['../apps', app.key]);
   }
 
   isAppActive(app) {

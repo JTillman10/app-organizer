@@ -9,3 +9,15 @@ html,
 body {
   font-family: Roboto, sans-serif;
 }
+
+.right {
+  float: right;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}

@@ -1,9 +1,7 @@
 <div class="content">
-  <div *ngIf="features$ | async as features; else loading">
-    <mat-card *ngIf="!features">
-      <mat-card-title>There are no features to display. Please create the first one.</mat-card-title>
-    </mat-card>
-    <form>
+  <section class="section half-width">
+    <div class="title left">{{ (app$ | async)?.name }}</div>
+    <form class="right">
       <div>
         <create-button (clicked)="toggleCreateFeature()" *ngIf="!creatingFeature">
           <span>Feature</span>
@@ -20,12 +18,20 @@
           </button>
         </div>
       </div>
-      <div class="features">
-        <div class="feature" [ngClass]="{'pad-right': isEven}" *ngFor="let feature of features; even as isEven">
-          <feature [feature]="feature" (update)="updateFeature($event)"></feature>
-        </div>
-      </div>
     </form>
+    <span class="right pad-right {{featuresDoneColor}} title">
+      {{ featuresDone }} / {{ totalFeatures }}
+    </span>
+  </section>
+  <div *ngIf="features; else loading">
+    <div class="features">
+      <mat-card *ngIf="!features.length" class="half-width">
+        <mat-card-title>There are no features to display. Please create the first one.</mat-card-title>
+      </mat-card>
+      <div class="feature" [ngClass]="{'pad-right': isEven}" *ngFor="let feature of features; even as isEven">
+        <feature [feature]="feature" (update)="updateFeature($event)"></feature>
+      </div>
+    </div>
   </div>
   <ng-template #loading>
     <mat-spinner></mat-spinner>

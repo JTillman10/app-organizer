@@ -11,7 +11,7 @@ import { User } from '../../../auth/shared/services/auth/auth.service';
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   @Input() user: User;

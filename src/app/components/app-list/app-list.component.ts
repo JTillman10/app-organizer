@@ -17,7 +17,7 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-list',
   templateUrl: './app-list.component.html',
-  styleUrls: ['./app-list.component.css']
+  styleUrls: ['./app-list.component.scss']
 })
 export class AppListComponent implements OnInit, OnDestroy {
   @Output() appSelected: EventEmitter<App> = new EventEmitter<App>();

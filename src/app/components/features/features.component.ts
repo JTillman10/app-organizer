@@ -13,7 +13,7 @@ import { App } from '../../models/app.model';
 @Component({
   selector: 'features',
   templateUrl: './features.component.html',
-  styleUrls: ['./features.component.css']
+  styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent implements OnInit {
   app$: Observable<App> = this.store.select<App>('app');

@@ -13,7 +13,8 @@
           "spec": false
         },
         "@schematics/angular:component": {
-          "spec": false
+          "spec": false,
+          "styleext": "scss"
         },
         "@schematics/angular:directive": {
           "spec": false
@@ -46,7 +47,7 @@
                 "input":
                   "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
               },
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -99,7 +100,7 @@
                 "input":
                   "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
               },
-              "styles.css"
+              "styles.scss"
             ],
             "scripts": [],
             "assets": ["src/favicon.ico", "src/assets"]

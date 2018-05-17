@@ -4,7 +4,7 @@ import { Feature } from '../../models/feature.model';
 @Component({
   selector: 'feature',
   templateUrl: './feature.component.html',
-  styleUrls: ['./feature.component.css']
+  styleUrls: ['./feature.component.scss']
 })
 export class FeatureComponent implements OnInit {
   @Input() feature: Feature;

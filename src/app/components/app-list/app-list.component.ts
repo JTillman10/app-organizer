@@ -29,6 +29,7 @@ export class AppListComponent implements OnInit, OnDestroy {
   apps: App[];
   selectedApp: App;
   creatingApp = false;
+  editing = false;
   newAppName = '';
   numberOfApps: number;
 
@@ -50,9 +51,11 @@ export class AppListComponent implements OnInit, OnDestroy {
   }
 
   navigateToApp(app: App) {
-    this.selectedApp = app;
-    this.store.set('app', app);
-    this.router.navigate(['../apps', app.key]);
+    if (!this.editing) {
+      this.selectedApp = app;
+      this.store.set('app', app);
+      this.router.navigate(['../apps', app.key]);
+    }
   }
 
   isAppActive(app) {
@@ -63,16 +66,21 @@ export class AppListComponent implements OnInit, OnDestroy {
     this.creatingApp = !this.creatingApp;
   }
 
+  toggleEditing() {
+    this.editing = !this.editing;
+  }
+
   async createApp() {
     await this.appsService.addApp({
       id: this.numberOfApps + 1,
       name: this.newAppName
     });
-    // this.apps.push({
-    //   id: this.apps.length + 1,
-    //   name: this.newAppName
-    // });
+
     this.newAppName = '';
     this.toggleCreateApp();
+  }
+
+  async deleteApp(app: App) {
+    await this.appsService.deleteApp(app.key);
   }
 }

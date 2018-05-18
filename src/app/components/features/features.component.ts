@@ -78,6 +78,14 @@ export class FeaturesComponent implements OnInit {
     return '';
   }
 
+  get featuresDonePercentage() {
+    if (this.featuresDone && this.totalFeatures) {
+      return (this.featuresDone / this.totalFeatures * 100).toFixed(2);
+    } else {
+      return 0;
+    }
+  }
+
   toggleCreateFeature() {
     this.creatingFeature = !this.creatingFeature;
   }
@@ -114,5 +122,9 @@ export class FeaturesComponent implements OnInit {
       this.appId,
       newFeature
     );
+  }
+
+  async deleteFeature(feature) {
+    await this.featureService.deleteFeature(feature.key, this.appId);
   }
 }

@@ -41,4 +41,8 @@ export class AppListService {
   addApp(app: App) {
     return this.db.list(`apps/${this.uid}`).push(app);
   }
+
+  deleteApp(key: string) {
+    return this.db.list(`apps/${this.uid}`).remove(key);
+  }
 }

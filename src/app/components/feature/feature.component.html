@@ -10,7 +10,8 @@
       <span *ngIf="editing">Cancel</span>
     </button>
     <span class="right pad-right {{requirementsDoneColor}}">
-      {{ requirementsDone }} / {{ feature.requirements ? feature.requirements.length : 0}}
+      <span>{{ requirementsDonePercentage }}%</span>
+      <span class="small-text margin-left">({{ requirementsDone }} / {{ feature.requirements ? feature.requirements.length: 0}})</span>
     </span>
   </mat-card-title>
   <section>
@@ -24,7 +25,11 @@
         </mat-form-field>
       </div>
       <ng-template #notEditing>
-        <div>{{ requirement.name }}</div>
+        <div>
+          <mat-icon class="green" *ngIf="requirement.done">check</mat-icon>
+          <mat-icon class="blank" *ngIf="!requirement.done">check</mat-icon>
+          {{ requirement.name }}
+        </div>
       </ng-template>
     </div>
     <div *ngIf="editing">
@@ -34,6 +39,9 @@
       <button mat-raised-button color="primary" class="right large" (click)="updateRequirement()">
         <mat-icon>check</mat-icon>
         <span>Save</span>
+      </button>
+      <button mat-raised-button (click)="deleteFeature()" class="right large">
+        Remove
       </button>
     </div>
   </section>

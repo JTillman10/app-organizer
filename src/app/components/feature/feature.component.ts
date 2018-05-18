@@ -10,6 +10,7 @@ export class FeatureComponent implements OnInit {
   @Input() feature: Feature;
 
   @Output() update = new EventEmitter<Feature>();
+  @Output() delete = new EventEmitter<Feature>();
 
   requirementsMap;
   featureNumber: number;
@@ -56,6 +57,18 @@ export class FeatureComponent implements OnInit {
     return 'red';
   }
 
+  get requirementsDonePercentage() {
+    if (this.feature.requirements) {
+      return (
+        this.requirementsDone /
+        this.feature.requirements.length *
+        100
+      ).toFixed(2);
+    } else {
+      return 0;
+    }
+  }
+
   orderRequirements() {
     this.feature.requirements.sort((a, b) => {
       if (a.number < b.number) {
@@ -93,5 +106,9 @@ export class FeatureComponent implements OnInit {
 
   updateRequirement() {
     this.update.emit(this.feature);
+  }
+
+  deleteFeature() {
+    this.delete.emit(this.feature);
   }
 }

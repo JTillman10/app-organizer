@@ -18,14 +18,6 @@
   color: black;
 }
 
-.margin-left {
-  margin-left: 0.5rem;
-}
-
-.margin-right {
-  margin-right: 0.5rem;
-}
-
 .mat-form-field .delete {
   color: red;
 }
@@ -46,4 +38,9 @@
 
 .pad-right {
   padding-right: 1rem;
+}
+
+.small-text {
+  font-size: 14px;
+  vertical-align: middle;
 }

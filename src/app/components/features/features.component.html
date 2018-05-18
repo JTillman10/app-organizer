@@ -19,8 +19,9 @@
         </div>
       </div>
     </form>
-    <span class="right pad-right {{featuresDoneColor}} title">
-      {{ featuresDone }} / {{ totalFeatures }}
+    <span class="right pad-right {{featuresDoneColor}}">
+      <span class="medium-text">{{ featuresDonePercentage }}%</span>
+      <span class="small-text margin-left">({{ featuresDone }} / {{ totalFeatures }})</span>
     </span>
   </section>
   <div *ngIf="features; else loading">
@@ -29,7 +30,7 @@
         <mat-card-title>There are no features to display. Please create the first one.</mat-card-title>
       </mat-card>
       <div class="feature" [ngClass]="{'pad-right': isEven}" *ngFor="let feature of features; even as isEven">
-        <feature [feature]="feature" (update)="updateFeature($event)"></feature>
+        <feature [feature]="feature" (update)="updateFeature($event)" (delete)="deleteFeature($event)"></feature>
       </div>
     </div>
   </div>

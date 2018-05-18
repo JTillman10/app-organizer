@@ -2,7 +2,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body {
-  background-color: whitesmoke;
+  background-color: #9e9e9e;
 }
 
 html,
@@ -20,4 +20,16 @@ body {
 
 .red {
   color: red;
+}
+
+.blank {
+  color: #bdbdbd;
+}
+
+.margin-left {
+  margin-left: 0.5rem;
+}
+
+.margin-right {
+  margin-right: 0.5rem;
 }

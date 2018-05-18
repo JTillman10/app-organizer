@@ -49,4 +49,8 @@ export class FeatureService {
       .object(`features/${this.uid}/${appId}/${key}`)
       .update(feature);
   }
+
+  deleteFeature(key: string, appId: string) {
+    return this.db.list(`features/${this.uid}/${appId}`).remove(key);
+  }
 }
